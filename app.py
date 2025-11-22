@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, render_template
 import csv, datetime
 
 app = Flask (__name__)
@@ -13,11 +13,13 @@ def login():
                              request.remote_addr,
                              request.form.get("username"),
                              request.form.get("password")])
-    return """<form method="POST">
-                Username:<input name='username'>
-                Password:<input name='password'>
-                <input type='submit'>
-              </form>"""
+
+    return render_template("login.html")
+    # return """<form method="POST">
+    #             Username:<input name='username'>
+    #             Password:<input name='password'>
+    #             <input type='submit'>
+    #           </form>"""
 
 
 if __name__ == "__main__":
